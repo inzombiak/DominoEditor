@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DominoEditorClass</class>
+ <widget class="QMainWindow" name="DominoEditorClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1140</width>
+    <height>479</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DominoEditor</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>400</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>400</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QTForceSettingsWidget" name="forceSettings">
+         <property name="maximumSize">
+          <size>
+           <width>400</width>
+           <height>400</height>
+          </size>
+         </property>
+         <layout class="QGridLayout" name="gridLayout"/>
+        </widget>
+        <widget class="QTBulletObjectSettingsWidget" name="objectSettings">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>355</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>371</width>
+           <height>337</height>
+          </size>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QTBulletObjectSettingsWidget" name="objectProperties" native="true">
+        <layout class="QGridLayout" name="gridLayout_2"/>
+       </widget>
+      </widget>
+      <widget class="QTOpenGLWidget" name="openGLWidget"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionForce"/>
+   <addaction name="actionAdd_Object"/>
+   <addaction name="actionDomino_Pattern"/>
+  </widget>
+  <action name="actionForce">
+   <property name="text">
+    <string>Force</string>
+   </property>
+   <property name="toolTip">
+    <string>Apply force</string>
+   </property>
+  </action>
+  <action name="actionAdd_Object">
+   <property name="text">
+    <string>Add Object</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a basic object</string>
+   </property>
+  </action>
+  <action name="actionDomino_Pattern">
+   <property name="text">
+    <string>Domino Pattern</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QTOpenGLWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header>QTOpenGLWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QTForceSettingsWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">qtforcesettingswidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QTBulletObjectSettingsWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">qtbulletobjectsettingswidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="dominoeditor.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionForce</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>DominoEditorClass</receiver>
+   <slot>ShowForceEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>121</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAdd_Object</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>DominoEditorClass</receiver>
+   <slot>ShowBulletObjectCreator()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionDomino_Pattern</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>DominoEditorClass</receiver>
+   <slot>ShowDominoPatternEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>152</x>
+     <y>779</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ShowForceEditor()</slot>
+  <slot>ShowDominoEditor()</slot>
+  <slot>ShowBulletObjectCreator()</slot>
+  <slot>ShowDominoPatternEditor()</slot>
+ </slots>
+</ui>

@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{37f75f7a-0f67-4e90-9554-783fb42e1502}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{5dc967d5-d0e1-4ae1-94af-689f6bd616db}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\QT">
+      <UniqueIdentifier>{e479025a-7959-4eaf-8d02-b67163461b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\QT">
+      <UniqueIdentifier>{99ecbd7d-cce8-4939-8a53-6a35dd65ee15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{5e735a88-c131-4687-89a7-ab0d57b6ec9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems">
+      <UniqueIdentifier>{1168e8eb-caa4-42b5-b50b-26564eb5586f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{217fe7e7-6a5b-43f3-a18b-45059667433f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systems">
+      <UniqueIdentifier>{306395b5-fac2-4018-bb97-acf7010947da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events">
+      <UniqueIdentifier>{073cb4d6-9bc3-4cf6-a133-905af501d80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Events">
+      <UniqueIdentifier>{f7ea7f13-facf-4989-a28e-c5f5a51cabfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events\Data">
+      <UniqueIdentifier>{c3bc1f44-6c5b-4fd3-acfc-035dc87f8208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Events\Event">
+      <UniqueIdentifier>{cec90d17-142a-4fbd-a815-97a76169191b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{f07511a1-df93-4225-8f75-ffd54a5de9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics">
+      <UniqueIdentifier>{522c6520-0c62-485a-8510-0dfb9655e319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{93298348-4321-40ed-a606-4676ff6664ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_dominoeditor.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_dominoeditor.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_dominoeditor.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTOpenGLWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTOpenGLWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vehicle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTForceSettingsWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTForceSettingsWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTBulletObjectSettingsWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTBulletObjectSettingsWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="QTBulletObjectSettingsWidget.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="QTForceSettingsWidget.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="QTOpenGLWidget.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="dominoeditor.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDebugDrawer.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsWorld.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTDominoGeneratorPopup.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTDominoGeneratorPopup.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="QTDominoGeneratorPopup.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QTGridView.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QTGridView.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="QTGridView.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="QTGeneratorCell.cpp">
+      <Filter>Source Files\QT</Filter>
+    </ClCompile>
+    <ClCompile Include="IPhysicsBody.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidPhysBody.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundPhysBody.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="dominoeditor.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="dominoeditor.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ForceSettingsWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTBulletObjectSettingsWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTBulletObjectSettingsWidget.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTForceSettingsWidget.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTOpenGLWidget.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RenderManager.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTDominoGeneratorPopup.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTDominoGeneratorPopup.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="dominoeditor.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FragmentShader.glsl" />
+    <CustomBuild Include="VertexShader.glsl" />
+    <CustomBuild Include="Object.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Vehicle.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PhysicsComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RenderComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BTDebugDrawer.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EventManager.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Game.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ObjectManager.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PhysicsManager.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PhysicsWorld.h">
+      <Filter>Header Files\Systems</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDApplyForce.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDCreateObject.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDCreatePhysComp.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDCreateRenderComp.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="IEventData.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ECreateObject.h">
+      <Filter>Header Files\Events\Event</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ECreatePhysComp.h">
+      <Filter>Header Files\Events\Event</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ECreateRenderComp.h">
+      <Filter>Header Files\Events\Event</Filter>
+    </CustomBuild>
+    <CustomBuild Include="IEvent.h">
+      <Filter>Header Files\Events\Event</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GameDefs.h">
+      <Filter>Header Files\Utilities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="HelperFunctions.h">
+      <Filter>Header Files\Utilities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_dominoeditor.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_ForceSettingsWidget.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_QTBulletObjectSettingsWidget.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_QTDominoGeneratorPopup.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDSelectObjectClick.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTGridView.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QTGeneratorCell.h">
+      <Filter>Header Files\QT</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EDGetPhysicsData.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="IPhysicsBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidPhysBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundPhysBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDefs.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EDCreateConstraint.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
