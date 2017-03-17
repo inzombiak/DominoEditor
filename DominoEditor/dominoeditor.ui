@@ -71,6 +71,9 @@
         </widget>
        </widget>
        <widget class="QTBulletObjectSettingsWidget" name="objectProperties" native="true">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <layout class="QGridLayout" name="gridLayout_2"/>
        </widget>
       </widget>

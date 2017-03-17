@@ -6,6 +6,7 @@
 #include "GameDefs.h"
 
 #include <functional>
+#include <iostream>5
 
 ObjectManager::~ObjectManager()
 {
@@ -24,22 +25,35 @@ void ObjectManager::Step()
 
 void ObjectManager::CreateObject(IEventData* data)
 {
+	printf("CREATING OBJ \n");
 	EDCreateObject* objData = dynamic_cast<EDCreateObject*>(data); 
-	if (!objData)
+	if (objData == NULL)
 		return;
+	else
+		printf("BAD EVENT \n");
 
 	bool isSync = objData->GetIsSynchronous();
 
 	Object* newObject = new Object(objData->GetData()->name, m_objects.size());
 	if (newObject->GetName().compare("main") == 0)
 		m_mainObject = newObject;
-	objData->GetData()->physCompData->owner = newObject;
+	std::cout << objData << std::endl;
+	
 	objData->GetData()->renderCompData->owner = newObject;
-	EDCreatePhysComp* physEventData = new EDCreatePhysComp(objData->GetData()->physCompData);
+	if (objData->GetData()->physCompData)
+	{
+		objData->GetData()->physCompData->owner = newObject;
+		EDCreatePhysComp* physEventData = new EDCreatePhysComp(objData->GetData()->physCompData);
+		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_PHYSICS_COMPONENT, physEventData, true);
+
+	}
+	else
+		printf("10 CREATING OBJ: NO PHYS COMP \n");
+
 	EDCreateRenderComp* renderEventData = new EDCreateRenderComp(objData->GetData()->renderCompData);
 	
-	EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_PHYSICS_COMPONENT, physEventData, isSync);
-	EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_RENDER_COMPONENT, renderEventData, isSync);
+	
+	EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_RENDER_COMPONENT, renderEventData, true);
 	if (isSync)
 		objData->GetData()->createdObject = newObject;
 

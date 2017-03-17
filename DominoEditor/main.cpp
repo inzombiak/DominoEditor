@@ -1,10 +1,12 @@
 #define CRTDBG_MAP_ALLOC
-
+//#include <afx.h>
 #include "dominoeditor.h"
 #include <QtWidgets/QApplication>
 
 #include <stdlib.h>
 #include <crtdbg.h>
+
+
 
 int main(int argc, char *argv[])
 {
@@ -15,5 +17,6 @@ int main(int argc, char *argv[])
 	
 	auto test =  a.exec();
 	_CrtDumpMemoryLeaks();
+//	afxMemDF |= checkAlwaysMemDF;
 	return test;
 }

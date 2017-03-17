@@ -64,8 +64,27 @@ void QTOpenGLWidget::mousePressEvent(QMouseEvent* event)
 		if (m_editingMode == EditingMode::CreateObject)
 		{
 			ObjectCreationData* creationData = new ObjectCreationData();
-			PhysicsDefs::ICreationData*  physData;
-			creationData->physCompData = physData;
+			//PhysicsDefs::ICreationData*  physData
+			creationData->renderCompData = new GameDefs::RenderCompCreationData();
+			
+			if (m_objectSettings->GetShape() == PhysicsDefs::Box)
+			{
+				auto boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(m_objectSettings);
+				creationData->renderCompData->vertices = CreateBox(glm::vec3(0,0,0), boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+				creationData->physCompData = new PhysicsDefs::BoxCreationData();
+				memcpy(creationData->physCompData,m_objectSettings, sizeof(PhysicsDefs::BoxCreationData));
+			}
+			else
+			{
+				auto sphereData = dynamic_cast<PhysicsDefs::SphereCreationData*>(m_objectSettings);
+				creationData->physCompData = new PhysicsDefs::SphereCreationData();
+				memcpy(creationData->physCompData, m_objectSettings, sizeof(PhysicsDefs::SphereCreationData));
+				creationData->renderCompData->vertices = CreateSphere(glm::vec3(0, 0, 0), sphereData->sphereRadius);
+			}
+				
+
+			creationData->renderCompData->drawType = GL_TRIANGLES;
+			creationData->renderCompData->color.push_back(glm::vec3(0.0f, 0.5f, 1.f));
 
 			EDCreateObject* createObjectED = new EDCreateObject(creationData);
 			EventManager::GetInstance()->QueueEvent(EventDefs::EventType::CREATE_OBJECT, createObjectED, false);

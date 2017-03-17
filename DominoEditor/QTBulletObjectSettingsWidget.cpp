@@ -7,7 +7,7 @@ QTBulletObjectSettingsWidget::QTBulletObjectSettingsWidget(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	SettingsChanged(); 
+	//SettingsChanged(); 
 }
 
 QTBulletObjectSettingsWidget::~QTBulletObjectSettingsWidget()

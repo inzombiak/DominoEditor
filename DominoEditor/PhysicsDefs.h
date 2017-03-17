@@ -40,7 +40,7 @@ namespace PhysicsDefs
 		}
 
 		int id;
-		Object* owner;
+		Object* owner = 0;
 		virtual ICreationData* clone() const = 0;
 	protected:
 		virtual void SetBodyAndShape() {};
@@ -141,8 +141,8 @@ namespace PhysicsDefs
 	{
 	public:
 		virtual ~ConstraintCreationData() {};
-		Object* body1;
-		Object* body2;
+		Object* body1 = 0;
+		Object* body2 = 0;
 		btVector3 anchor;
 		btVector3 upperAngularLimit;
 		btVector3 lowerAngularLimit;

@@ -315,31 +315,29 @@
     <CustomBuild Include="QTGeneratorCell.h">
       <Filter>Header Files\QT</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="EDGetPhysicsData.h">
-      <Filter>Header Files\Events\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="IPhysicsBody.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="RigidPhysBody.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="CompoundPhysBody.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsDefs.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="EDCreateConstraint.h">
-      <Filter>Header Files\Events\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="IComponent.h">
+    <CustomBuild Include="IComponent.h">
       <Filter>Header Files\Components</Filter>
-    </ClInclude>
+    </CustomBuild>
+    <CustomBuild Include="EDCreateConstraint.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EDGetPhysicsData.h">
+      <Filter>Header Files\Events\Data</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Debug.h">
+      <Filter>Header Files\Utilities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CompoundPhysBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="IPhysicsBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PhysicsDefs.h">
+      <Filter>Header Files\Physics</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RigidPhysBody.h">
+      <Filter>Header Files\Physics</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

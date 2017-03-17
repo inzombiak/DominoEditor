@@ -39,16 +39,18 @@ bool EventManager::RemoveEventListener(EventDefs::EventType type, EventDelegate 
 
 void EventManager::QueueEvent(EventDefs::EventType type, IEventData* data, bool isSynchronous)
 {
+	printf("EVENT ADDED \n");
 	if (!m_isSyncEventList.at(type) && !isSynchronous)
 	{
 		m_eventQueue.push(data);
-
+		printf("EVENT ASYNC ");
 		return;
 	}
 		
 	auto callBackListIt = m_eventCallbacks.find(type);
 	if (callBackListIt == m_eventCallbacks.end())
 	{
+		printf("NO CALLBACK");
 		delete data;
 		return;
 	}
@@ -95,15 +97,15 @@ EventManager::SynchronousEventMap EventManager::SetSynchronousEvents()
 	result[EventDefs::GET_PHYSICS_DATA] = true;
 	result[EventDefs::GET_OBJECT_SETTINGS] = true;
 
-	result[EventDefs::NULL_TYPE] = false;
-	result[EventDefs::CREATE_OBJECT] = false;
-	result[EventDefs::CREATE_PHYSICS_COMPONENT] = false;
-	result[EventDefs::CREATE_RENDER_COMPONENT] = false;
-	result[EventDefs::CREATE_CONSTRAINT] = false;
-	result[EventDefs::DELETE_OBJECT] = false;
-	result[EventDefs::DELETE_PHYSICS_COMPONENT] = false;
-	result[EventDefs::DELETE_RENDER_COMPONENT] = false;
-	result[EventDefs::APPLY_FORCE] = false;
+	result[EventDefs::NULL_TYPE] = true;
+	result[EventDefs::CREATE_OBJECT] = true;
+	result[EventDefs::CREATE_PHYSICS_COMPONENT]= true;
+	result[EventDefs::CREATE_RENDER_COMPONENT] = true;
+	result[EventDefs::CREATE_CONSTRAINT] = true;
+	result[EventDefs::DELETE_OBJECT] = true;
+	result[EventDefs::DELETE_PHYSICS_COMPONENT]= true;
+	result[EventDefs::DELETE_RENDER_COMPONENT] = true;
+	result[EventDefs::APPLY_FORCE] = true;
 
 	return result;
 }

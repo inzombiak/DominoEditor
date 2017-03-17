@@ -96,6 +96,7 @@ public:
         splitter_2->addWidget(stackedWidget);
         objectProperties = new QTBulletObjectSettingsWidget(splitter_2);
         objectProperties->setObjectName(QStringLiteral("objectProperties"));
+        objectProperties->setEnabled(false);
         gridLayout_2 = new QGridLayout(objectProperties);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);

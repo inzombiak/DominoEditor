@@ -37,11 +37,13 @@ void PhysicsManager::Init()
 	tinyxml2::XMLDocument CIXML;
 	if (CIXML.LoadFile(filepath.c_str()) == tinyxml2::XMLError::XML_SUCCESS)
 		LoadCIFromXMLDocument(&CIXML);
+	else
+		printf("%s not found \n", filepath);
 
 	EventManager::GetInstance()->AddEventListener(EventDefs::CREATE_PHYSICS_COMPONENT, std::bind(&PhysicsManager::CreatePhysicsComponent, this, std::placeholders::_1));
 	EventManager::GetInstance()->AddEventListener(EventDefs::GET_PHYSICS_DATA, std::bind(&PhysicsManager::GetPhysCompCreationData, this, std::placeholders::_1));
 	EventManager::GetInstance()->AddEventListener(EventDefs::CREATE_CONSTRAINT, std::bind(&PhysicsManager::CreateConstraint, this, std::placeholders::_1));
-
+	
 	//EventManager::GetInstance()->AddEventListener(EventDefs::APPLY_FORCE, std::bind(&PhysicsManager::ApplyForce, this, std::placeholders::_1));
 
 	//btCollisionShape* carBoxShape = new btBoxShape(btVector3(1.f, 0.5f, 2.f));
@@ -148,6 +150,8 @@ void PhysicsManager::LoadCIFromXMLDocument(tinyxml2::XMLDocument* doc)
 
 		pObject = pObject->NextSiblingElement();
 	}
+
+	printf("DATA: %i", m_preloadedInfo.size());
 }
 
 void PhysicsManager::Clear()
@@ -297,10 +301,16 @@ void PhysicsManager::ApplyForce(PhysicsComponent* component, glm::vec3& hitPoint
 
 void PhysicsManager::CreatePhysicsComponent(IEventData* data)
 {
+
+	printf("PHY COMP \n");
 	EDCreatePhysComp* physData = dynamic_cast<EDCreatePhysComp*>(data);
 	if (!physData)
+	{
+		printf("PHY COMP ERROR \n");
 		return;
 
+	}
+		
 	auto settings = physData->GetData();
 
 	std::size_t hashedSettings = HashPhysCreationData(settings);
@@ -317,7 +327,7 @@ void PhysicsManager::CreatePhysicsComponent(IEventData* data)
 		component->SetOwner(settings->owner);
 		m_physicsWorld.AddBody(body);
 		m_physicsComponents.push_back(component);
-
+		printf("NUM PROBS %i \n", m_physicsComponents.size());
 		return;
 	}
 
@@ -333,6 +343,8 @@ void PhysicsManager::CreatePhysicsComponent(IEventData* data)
 	}
 
 	data->SetDelete(true);
+
+	printf("NUM PROBS %i \n", m_physicsComponents.size());
 
 	/*if (objectName.compare("car") == 0)
 	{
@@ -435,9 +447,12 @@ void PhysicsManager::CreateRigidBody(PhysicsDefs::IRigidBodyCreationData* RBCD, 
 	m_collisionShapes.push_back(collisionShape);
 
 	PhysicsComponent* component = new PhysicsComponent(m_physicsComponents.size(), hashID);
+	if (component)
+	{
+		component->SetBody(body);
+		component->SetOwner(RBCD->owner);
+	}
 
-	component->SetBody(body);
-	component->SetOwner(RBCD->owner);
 	m_physicsWorld.AddBody(body);
 	m_physicsComponents.push_back(component);
 
@@ -506,14 +521,24 @@ void PhysicsManager::CreateCompoundBody(PhysicsDefs::CompoundCreationData* compD
 
 void PhysicsManager::CreateConstraint(IEventData* data)
 {
+	if (!this)
+		return;
+
 	EDCreateConstraint* constData = dynamic_cast<EDCreateConstraint*>(data);
 	if (!constData)
 		return;
 
 	PhysicsDefs::ConstraintCreationData* settings = constData->GetData();
+	if (!settings)
+		return;
+	auto physC1 = settings->body1->GetPhysicsComponent();
+	auto physC2 = settings->body2->GetPhysicsComponent();
 
-	RigidPhysBody* body1 = dynamic_cast<RigidPhysBody*>(settings->body1->GetPhysicsComponent()->GetBody());
-	RigidPhysBody* body2 = dynamic_cast<RigidPhysBody*>(settings->body2->GetPhysicsComponent()->GetBody());
+	if (!physC1 || !physC2)
+		return;
+
+	RigidPhysBody* body1 = dynamic_cast<RigidPhysBody*>(physC1->GetBody());
+	RigidPhysBody* body2 = dynamic_cast<RigidPhysBody*>(physC2->GetBody());
 
 	auto rb1 = body1->m_btBody;
 	auto rb2 = body2->m_btBody;
@@ -571,11 +596,15 @@ void PhysicsManager::GetPhysCompCreationData(IEventData* data)
 {
 	EDGetPhysicsData* getPhysDataED = dynamic_cast<EDGetPhysicsData*>(data);
 	if (!getPhysDataED)
+	{
+		printf("INFO not found \n");
 		return;
+	}
 
 	auto rbciIt = m_preloadedInfo.find(getPhysDataED->GetName());
 	if (rbciIt == m_preloadedInfo.end())
 	{
+		printf("INFO not found \n");
 		return;
 	}
 

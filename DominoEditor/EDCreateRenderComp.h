@@ -26,6 +26,6 @@ public:
 	}
 
 private:
-	GameDefs::RenderCompCreationData* m_renderCompCreationData;
+	GameDefs::RenderCompCreationData* m_renderCompCreationData = 0;
 };
 

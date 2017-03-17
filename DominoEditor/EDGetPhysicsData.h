@@ -23,6 +23,7 @@ public:
 	void SetData(PhysicsDefs::ICreationData* data)
 	{
 		m_physCompCreationData = data;
+		m_dataFound = true;
 	}
 
 	PhysicsDefs::ICreationData* GetData() const
@@ -48,5 +49,5 @@ public:
 private:
 	bool m_dataFound;
 	std::string m_name;
-	PhysicsDefs::ICreationData* m_physCompCreationData;
+	PhysicsDefs::ICreationData* m_physCompCreationData = 0;
 };

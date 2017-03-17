@@ -54,10 +54,16 @@ void Game::InitSim()
 
 	if (m_physicsManager)
 		m_physicsManager->Init();
+	else
+		printf("SIM INIT ERROR");
 	if (m_renderManager)
 		m_renderManager->Init();
+	else
+		printf("SIM INIT ERROR");
 	if (m_objectManager)
 		m_objectManager->Init();
+	else
+		printf("SIM INIT ERROR");
 
 	EventManager::GetInstance()->AddEventListener(EventDefs::SELECT_OBJECT_CLICK, std::bind(&Game::SelectObjectWithClick, this, std::placeholders::_1));
 	EventManager::GetInstance()->AddEventListener(EventDefs::APPLY_FORCE, std::bind(&Game::ApplyForce, this, std::placeholders::_1));
@@ -137,87 +143,99 @@ void TestCompound()
 	compData->rotationAngles[2] = 0;
 
 	EDCreateObject* eventData = new EDCreateObject(obj1Data);
-	EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, eventData, false);
+	EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, eventData, true);
 }
 
 void Game::Test()
 {
+	printf("Start test \n");
+
 	if (m_physicsManager && m_objectManager && m_renderManager)
 	{
-		//SPIRAL
-		ObjectCreationData* spiralGroundData = new ObjectCreationData();
-		spiralGroundData->name = "test";
+		{//SPIRAL
+			ObjectCreationData* spiralGroundData = new ObjectCreationData();
+			spiralGroundData->name = "test";
 
-		EDGetPhysicsData* getPhysCompData = new EDGetPhysicsData(std::string("Ground"));
-		EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, false);
+			EDGetPhysicsData* getPhysCompData = new EDGetPhysicsData(std::string("Ground"));
+			EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
 
-		if (getPhysCompData->WasDataFound())
-			spiralGroundData->physCompData = getPhysCompData->GetData();
-
-		spiralGroundData->renderCompData->color.push_back(glm::vec3(0.5f, 0.5f, 0.f));
-		spiralGroundData->renderCompData->drawType = GL_TRIANGLES;
-		glm::vec3 pos(0, 0, 0);
-		PhysicsDefs::BoxCreationData* boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(spiralGroundData->physCompData);
-		if (boxData)
-			spiralGroundData->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
-		EDCreateObject* eventData = new EDCreateObject(spiralGroundData);
-		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, eventData, false);
-
+			if (getPhysCompData->WasDataFound())
+				spiralGroundData->physCompData = getPhysCompData->GetData();
+			else
+				printf("NO DATA \n");
+			spiralGroundData->renderCompData->color.push_back(glm::vec3(0.5f, 0.5f, 0.f));
+			spiralGroundData->renderCompData->drawType = GL_TRIANGLES;
+			glm::vec3 pos(0, 0, 0);
+			PhysicsDefs::BoxCreationData* boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(spiralGroundData->physCompData);
+			if (boxData)
+				spiralGroundData->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+			EDCreateObject* eventData = new EDCreateObject(spiralGroundData);
+			EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, eventData, true);
+		}
+		
 		//Obj1
 		ObjectCreationData* obj1Data = new ObjectCreationData();
 		obj1Data->name = "obj1";
-
-		getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
-		EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
-
-		if (getPhysCompData->WasDataFound())
-			obj1Data->physCompData = getPhysCompData->GetData();
-
-		obj1Data->renderCompData->color.push_back(glm::vec3(1.0f, 0.5f, 1.f));
-		obj1Data->renderCompData->drawType = GL_TRIANGLES;
-		boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj1Data->physCompData);
-		if (boxData)
 		{
-			boxData->mass = 0;
-			boxData->boxDimensions[0] = 0.5;
-			boxData->boxDimensions[1] = 1;
+			EDGetPhysicsData* getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
+			EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
 
-			boxData->msPosition[1] = 16.f;
+			if (getPhysCompData->WasDataFound())
+				obj1Data->physCompData = getPhysCompData->GetData();
+			else
+				printf("                  NO DATA2 \n");
+			glm::vec3 pos(0, 0, 0);
+			obj1Data->renderCompData->color.push_back(glm::vec3(1.0f, 0.5f, 1.f));
+			obj1Data->renderCompData->drawType = GL_TRIANGLES;
+			PhysicsDefs::BoxCreationData*  boxData2 = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj1Data->physCompData);
+			if (boxData2)
+			{
+				boxData2->mass = 0;
+				boxData2->boxDimensions[0] = 0.5;
+				boxData2->boxDimensions[1] = 1;
 
-			obj1Data->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+				boxData2->msPosition[1] = 16.f;
+
+				obj1Data->renderCompData->vertices = CreateBox(pos, boxData2->boxDimensions[0] * 2, boxData2->boxDimensions[1] * 2, boxData2->boxDimensions[2] * 2);
+			}
+
+			auto obj1EventData = new EDCreateObject(obj1Data);
+			obj1EventData->SetIsSynchrnous(true);
+			EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj1EventData, true);
+			printf("\n OBJ1 made \n");
 		}
-			
-		auto obj1EventData = new EDCreateObject(obj1Data);
-		obj1EventData->SetIsSynchrnous(true);
-		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj1EventData, true);
-
 		//Obj2
+		
 		ObjectCreationData* obj2Data = new ObjectCreationData();
 		obj2Data->name = "obj2";
-
-		getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
-		EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
-
-		if (getPhysCompData->WasDataFound())
-			obj2Data->physCompData = getPhysCompData->GetData();
-
-		obj2Data->renderCompData->color.push_back(glm::vec3(0.0f, 0.5f, 1.f));
-		obj2Data->renderCompData->drawType = GL_TRIANGLES;
-		boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj2Data->physCompData);
-		if (boxData)
 		{
-			boxData->mass = 10;
-			boxData->boxDimensions[0] = 0.75;
-			boxData->boxDimensions[1] = 1;
-			boxData->boxDimensions[2] = 0.2;
+			EDGetPhysicsData* getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
+			EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
 
-			boxData->msPosition[1] = 14.f;
-			obj2Data->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+			if (getPhysCompData->WasDataFound())
+				obj2Data->physCompData = getPhysCompData->GetData();
+			else
+				printf("                  NO DATA3 \n");
+			glm::vec3 pos(0, 0, 0);
+			obj2Data->renderCompData->color.push_back(glm::vec3(0.0f, 0.5f, 1.f));
+			obj2Data->renderCompData->drawType = GL_TRIANGLES;
+			PhysicsDefs::BoxCreationData* boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj2Data->physCompData);
+			if (boxData)
+			{
+				boxData->mass = 10;
+				boxData->boxDimensions[0] = 0.75;
+				boxData->boxDimensions[1] = 1;
+				boxData->boxDimensions[2] = 0.2;
+
+				boxData->msPosition[1] = 14.f;
+				obj2Data->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+			}
+
+			auto obj2EventData = new EDCreateObject(obj2Data);
+			obj2EventData->SetIsSynchrnous(true);
+			EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj2EventData, true);
 		}
-
-		auto obj2EventData = new EDCreateObject(obj2Data);
-		obj2EventData->SetIsSynchrnous(true);
-		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj2EventData, true);
+		
 
 		//6DoFConstraint
 		auto obj1 = obj1Data->createdObject;
@@ -240,35 +258,36 @@ void Game::Test()
 		
 		EDCreateConstraint* constData = new EDCreateConstraint(constraintData);
 		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_CONSTRAINT, constData, true);
-
 		//Obj2
 		ObjectCreationData* obj3Data = new ObjectCreationData();
 		obj1Data->name = "obj3";
 
-		getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
-		EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
-
-		if (getPhysCompData->WasDataFound())
-			obj3Data->physCompData = getPhysCompData->GetData();
-
-		obj3Data->renderCompData->color.push_back(glm::vec3(1.f, 0.5f, 0.f));
-		obj3Data->renderCompData->drawType = GL_TRIANGLES;
-		boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj3Data->physCompData);
-		if (boxData)
 		{
-			boxData->mass = 4;
-			boxData->boxDimensions[0] = 0.75;
-			boxData->boxDimensions[1] = 1;
-			boxData->boxDimensions[2] = 0.2;
+		
+			EDGetPhysicsData* getPhysCompData = new EDGetPhysicsData(std::string("Domino"));
+			EventManager::GetInstance()->QueueEvent(EventDefs::GET_PHYSICS_DATA, getPhysCompData, true);
 
-			boxData->msPosition[1] = 12.f;
-			obj3Data->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+			if (getPhysCompData->WasDataFound())
+				obj3Data->physCompData = getPhysCompData->GetData();
+			glm::vec3 pos(0, 0, 0);
+			obj3Data->renderCompData->color.push_back(glm::vec3(1.f, 0.5f, 0.f));
+			obj3Data->renderCompData->drawType = GL_TRIANGLES;
+			PhysicsDefs::BoxCreationData* boxData = dynamic_cast<PhysicsDefs::BoxCreationData*>(obj3Data->physCompData);
+			if (boxData)
+			{
+				boxData->mass = 4;
+				boxData->boxDimensions[0] = 0.75;
+				boxData->boxDimensions[1] = 1;
+				boxData->boxDimensions[2] = 0.2;
+
+				boxData->msPosition[1] = 12.f;
+				obj3Data->renderCompData->vertices = CreateBox(pos, boxData->boxDimensions[0] * 2, boxData->boxDimensions[1] * 2, boxData->boxDimensions[2] * 2);
+			}
+
+			auto obj3EventData = new EDCreateObject(obj3Data);
+			obj3EventData->SetIsSynchrnous(true);
+			EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj3EventData, true);
 		}
-
-		auto obj3EventData = new EDCreateObject(obj3Data);
-		obj3EventData->SetIsSynchrnous(true);
-		EventManager::GetInstance()->QueueEvent(EventDefs::CREATE_OBJECT, obj3EventData, true);
-
 		////6DoFConstraint
 		auto obj3 = obj3Data->createdObject;
 
@@ -484,6 +503,8 @@ void Game::Test()
 		}
 		}*/
 	}
+
+	printf("End test \n");
 }
 
 void Game::Step(double dt)

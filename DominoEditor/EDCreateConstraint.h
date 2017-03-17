@@ -26,5 +26,5 @@ public:
 	}
 
 private:
-	PhysicsDefs::ConstraintCreationData* m_constCreationData;
+	PhysicsDefs::ConstraintCreationData* m_constCreationData = 0;
 };

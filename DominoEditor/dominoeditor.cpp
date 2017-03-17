@@ -15,7 +15,7 @@ DominoEditor::DominoEditor(QWidget *parent)
 	
 	QObject::connect(m_forceSettingsWidget, SIGNAL(ForceValueChangedSignal(double)), this, SLOT(ForceSpinBoxValueChanged(double)));
 	QObject::connect(m_objectSettingsWidget, SIGNAL(SettingsChangedSignal(PhysicsSettings)), this, SLOT(BulletObjectSettingsChanged(PhysicsSettings)));
-	m_objectSettingsWidget->SettingsChanged();
+	//m_objectSettingsWidget->SettingsChanged();
 }
 
 DominoEditor::~DominoEditor()

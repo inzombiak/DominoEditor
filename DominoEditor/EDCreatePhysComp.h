@@ -26,6 +26,6 @@ public:
 	}
 
 private:
-	PhysicsDefs::ICreationData* m_physCompCreationData;
+	PhysicsDefs::ICreationData* m_physCompCreationData = 0;
 };
 

@@ -34,6 +34,6 @@ public:
 	}
 
 private:
-	ObjectCreationData* m_objCreationData;
+	ObjectCreationData* m_objCreationData = 0;
 };
 

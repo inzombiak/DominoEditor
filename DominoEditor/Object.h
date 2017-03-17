@@ -17,6 +17,7 @@ public:
 	void SetPhysicsComponent(PhysicsComponent* physicsComp);
 	PhysicsComponent* GetPhysicsComponent()
 	{
+
 		return m_physicsComponent;
 	}
 	void SetPosition(glm::vec3& pos);
@@ -42,7 +43,7 @@ private:
 	glm::quat m_rotation;
 	glm::mat4 m_openGLMat;
 	std::string m_name;
-	RenderComponent* m_renderComponent;
-	PhysicsComponent* m_physicsComponent;
+	RenderComponent* m_renderComponent = 0;
+	PhysicsComponent* m_physicsComponent = 0;
 };
 
