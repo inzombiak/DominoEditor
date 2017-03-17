@@ -1,0 +1,33 @@
+<QTBulletFormSpecs>
+	<Field name = "Shape">
+		<Widget labelText = "Shape Type" qtWidget = "QTComboBox">
+			<ComboBoxItem value = "Box" widgetName = "BoxEditor">
+				<ComboBoxSelectionWidget type = "box">
+					<Widget labelText = "Width" qtWidget = "QTDoubleSpinBox" />
+					<Widget labelText = "Height" qtWidget = "QTDoubleSpinBox" />
+					<Widget labelText = "Length" qtWidget = "QTDoubleSpinBox" />
+				</ComboBoxSelectionWidget>
+			</ComboBoxItem>
+			<ComboBoxItem value = "Sphere" widgetName = "SphereEditor">
+				<ComboBoxSelectionWidget type = "sphere">
+					<Widget labelText = "Radius" qtWidget = "QTDoubleSpinBox" />
+				</ComboBoxSelectionWidget>
+			</ComboBoxItem>
+		</Widget>
+	<Field name = "MotionState">
+		<Widget labelText = "Rotation Quaternion">
+			<HorWidget labelText = "X" qtWidget = "QTDoubleSpinBox" />
+			<HorWidget labelText = "Y" qtWidget = "QTDoubleSpinBox" />
+			<HorWidget labelText = "Z" qtWidget = "QTDoubleSpinBox" />
+			<HorWidget labelText = "W" qtWidget = "QTDoubleSpinBox" />
+		</Widget>
+		<Widget labelText = "Position">
+			<HorWidget labelText = "X" qtWidget = "QTDoubleSpinBox" />
+			<HorWidget labelText = "Y" qtWidget = "QTDoubleSpinBox" />
+			<HorWidget labelText = "Z" qtWidget = "QTDoubleSpinBox" />
+		</Widget>
+	</Field>
+	<Field name = "Mass" qtWidget = "QTDoubleSpinBox"/>
+	<Field name = "Friction" qtWidget = "QTDoubleSpinBox"/>
+	<Field name = "Rolling Friction" qtWidget = "QTDoubleSpinBox"/>
+</QTBulletFormSpecs>

@@ -1,0 +1,58 @@
+<PhysicsObjects>
+
+	<Object name = "Ground">
+		<Shape type = "box" x = "100" y = "3" z = "100" />
+		<MotionState>
+			<Rotation x = "0" y = "0" z = "0" w = "1" />
+			<Position x = "0" y = "0" z = "0" />
+		</MotionState>
+		<Mass value = "0"/>
+		<Friction value = "0.8"/>
+		<RollingFriction value = "1" />
+	</Object>
+	
+	<Object name = "Domino">
+		<Shape type = "box" x = "2.4" y = "4.8" z = "0.75" />
+		<MotionState>
+			<Rotation x = "0" y = "0" z = "0" w = "1" />
+			<Position x = "0" y = "0" z = "0" />
+		</MotionState>
+		<Mass value = "5"/>
+		<Friction value = "0.6" />
+	</Object>
+	
+	<Object name = "Ball">
+		<Shape type = "sphere" radius = "1" />
+		<MotionState>
+			<Rotation x = "0" y = "0" z = "0" w = "1" />
+			<Position x = "0" y = "1" z = "0" />
+		</MotionState>
+		<Mass value = "8"/>
+		<Friction value = "0.3"/>
+		<RollingFriction value = "0.1"/>
+	</Object>
+	
+	<Object name = "Slope">
+		<Shape type = "trianglemesh">
+			<Vertex x = "5" y = "0" z = "0"/>
+			<Vertex x = "-5" y = "0" z = "0"/>
+			<Vertex x = "5" y = "5" z = "0"/>
+			<Vertex x = "-5" y = "5" z = "0"/>
+			<Vertex x = "0" y = "0" z = "20"/>
+			<Triangle v1 = "0" v2 = "1" v3 = "2"/>
+			<Triangle v1 = "2" v2 = "3" v3 = "1"/>
+			<Triangle v1 = "0" v2 = "2" v3 = "4"/>
+			<Triangle v1 = "1" v2 = "3" v3 = "4"/>
+			<Triangle v1 = "2" v2 = "3" v3 = "4"/>
+		</Shape>
+		<MotionState>
+			<Rotation x = "0" y = "0" z = "0" w = "1" />
+			<Position x = "0" y = "0" z = "0" />
+		</MotionState>
+		<Mass value = "0"/>
+		<Friction value = "0.4"/>
+		<RollingFriction value = "1" />
+	</Object>
+	
+</PhysicsObjects>
+
